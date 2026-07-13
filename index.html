@@ -422,43 +422,26 @@
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 300;
             font-size: 1.1em;
-            letter-spacing: 0.38em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #FFF 0%, #D8B4FE 45%, #8B5CF6 60%, #FFF 100%);
-            background-size: 250% 250%;
+            background: linear-gradient(180deg, #111 0%, #555 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            opacity: 0;
-            filter: blur(22px) drop-shadow(0 0 35px rgba(139, 92, 246, 0.8));
-            transform: perspective(600px) rotateX(25deg) scale(0.88) translateY(24px);
-            transition: letter-spacing 1.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
             display: inline-block;
+            opacity: 0;
+            filter: blur(14px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         :root[data-theme="dark"] .family-name {
-            background: linear-gradient(135deg, #FFF 0%, #E9D5FF 45%, #A855F7 65%, #FFF 100%);
-            background-size: 250% 250%;
+            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .family-name.is-revealed {
-            letter-spacing: 0.1em;
             opacity: 1;
-            filter: blur(0px) drop-shadow(0 0 15px rgba(139, 92, 246, 0.35));
-            transform: perspective(600px) rotateX(0deg) scale(1) translateY(0);
-            animation: premium-shimmer 4s ease-in-out infinite alternate 1.6s;
-        }
-
-        @keyframes premium-shimmer {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        @keyframes blink-blue {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+            filter: blur(0px);
         }
 
         .hidden-s {
@@ -488,24 +471,23 @@
             align-items: baseline;
         }
 
-        .handwriting-svg {
-            width: clamp(190px, 26vw, 310px);
-            height: auto;
-            margin-left: -5px;
-            margin-bottom: -10px;
-            filter: drop-shadow(0 4px 24px rgba(0, 122, 255, 0.45));
-            overflow: visible;
+        #heroBigS {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #heroBigS.is-drawn {
+            opacity: 1;
         }
 
-        .sig-letter {
-            fill: transparent;
-            stroke: #007AFF;
-            stroke-width: 24;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .hw-text {
+            display: inline-block;
+            clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+            transition: clip-path 2.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: clip-path;
+            padding-right: 8px;
         }
-        :root[data-theme="dark"] .sig-letter {
-            stroke: #3399FF;
+        .hw-text.is-drawn {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
 
         .hero-role {
@@ -2131,11 +2113,7 @@
                 Available for opportunities
             </div>
             <h1 class="hero-title reveal delay-1"><span class="family-name" id="heroFamilyName">Qo<span class="hidden-s">S</span>imov</span><span
-                    class="first-name" id="heroFirstName"><svg class="handwriting-svg" viewBox="-15 -720 3709 920" xmlns="http://www.w3.org/2000/svg">
-  <g transform="scale(1, -1)">
-    <path class="sig-letter" d="M203 -87Q149 -87 101.0 -67.5Q53 -48 23.5 -8.0Q-6 32 -6 92Q-6 144 14.5 173.0Q35 202 65.0 214.0Q95 226 122 226Q95 197 81.0 162.0Q67 127 67 92Q67 55 83.5 23.0Q100 -9 134.0 -28.5Q168 -48 220 -48Q265 -48 308.0 -31.5Q351 -15 378.5 17.5Q406 50 406 98Q406 141 384.0 172.0Q362 203 327.5 227.0Q293 251 254.0 273.0Q215 295 180.5 319.5Q146 344 124.0 376.0Q102 408 102 453Q102 495 122.0 541.0Q142 587 179.5 628.0Q217 669 269.5 694.5Q322 720 387 720Q446 720 469.0 691.5Q492 663 492 620Q492 584 479.5 542.5Q467 501 449.0 463.5Q431 426 415 400Q397 404 389.5 415.5Q382 427 382 443Q382 464 391.0 491.0Q400 518 411.5 547.0Q423 576 432.0 603.5Q441 631 441 653Q441 673 429.0 684.5Q417 696 385 696Q338 696 298.0 674.0Q258 652 228.0 617.5Q198 583 181.5 545.0Q165 507 165 476Q165 439 186.5 412.5Q208 386 242.0 364.5Q276 343 314.5 321.5Q353 300 387.0 274.0Q421 248 442.5 212.5Q464 177 464 126Q464 74 441.0 34.5Q418 -5 379.5 -32.0Q341 -59 295.0 -73.0Q249 -87 203 -87Z" transform="translate(0, 0)" /> <path class="sig-letter" d="M48 -47Q17 -47 -4.5 -26.5Q-26 -6 -26 36Q-26 72 -10.0 113.5Q6 155 34.0 195.5Q62 236 97.5 269.5Q133 303 172.5 323.0Q212 343 251 343Q290 343 316.0 322.5Q342 302 342 268Q342 243 328.5 234.0Q315 225 293 225Q295 233 296.5 242.5Q298 252 298 260Q298 283 287.0 299.5Q276 316 249 316Q221 316 192.0 296.5Q163 277 136.0 244.5Q109 212 88.0 174.0Q67 136 55.0 99.0Q43 62 43 33Q43 -6 70 -6Q93 -6 120.0 15.5Q147 37 175.5 70.5Q204 104 230.0 140.0Q256 176 276 206Q280 212 281 212Q287 211 296.5 208.0Q306 205 313.0 200.0Q320 195 320 187Q320 178 311.0 162.5Q302 147 291.0 127.0Q280 107 271.0 86.5Q262 66 262 48Q262 33 270.0 18.5Q278 4 296 4Q323 4 367.0 43.5Q411 83 456 162L466 152Q445 98 412.0 57.0Q379 16 341.5 -7.0Q304 -30 268 -30Q231 -30 213.5 -8.0Q196 14 196 40Q196 46 197.0 53.5Q198 61 199 69Q156 11 120.5 -18.0Q85 -47 48 -47Z" transform="translate(536, 0)" /> <path class="sig-letter" d="M173 -26Q139 -26 119.5 -8.0Q100 10 100 39Q100 69 114.0 102.0Q128 135 141.5 167.5Q155 200 155 226Q155 258 136.5 273.5Q118 289 99 302Q76 243 51.0 190.0Q26 137 10 110L1 127Q15 153 37.5 203.0Q60 253 82 317Q72 327 72 341Q72 371 89.0 390.0Q106 409 114 409Q125 409 126.5 399.5Q128 390 128 385Q128 380 122.5 365.5Q117 351 117 348Q117 334 132.5 322.5Q148 311 168.0 296.5Q188 282 203.5 261.5Q219 241 219 209Q219 179 206.5 148.0Q194 117 181.5 89.0Q169 61 169 40Q169 22 178.0 16.0Q187 10 199 10Q223 10 248.5 25.0Q274 40 298.0 63.0Q322 86 341.0 111.5Q360 137 369 159L382 149Q363 107 330.0 66.5Q297 26 256.5 0.0Q216 -26 173 -26Z" transform="translate(972, 0)" /> <path class="sig-letter" d="M59 -30Q42 -30 24.5 -21.5Q7 -13 -4.5 6.0Q-16 25 -16 54Q-16 87 0.0 128.0Q16 169 43.0 209.5Q70 250 105.0 284.5Q140 319 178.0 339.5Q216 360 253 360Q274 360 285.5 352.5Q297 345 297 329Q297 325 296.5 322.0Q296 319 295 315Q290 323 280.5 326.5Q271 330 257 330Q225 330 194.5 310.5Q164 291 138.5 259.5Q113 228 94.0 192.0Q75 156 64.5 122.5Q54 89 54 66Q54 44 64.0 31.0Q74 18 90 18Q117 18 155.5 52.0Q194 86 234.0 148.0Q274 210 306 293Q328 351 351.5 411.0Q375 471 399.0 526.5Q423 582 445.5 625.5Q468 669 488.5 694.5Q509 720 525 720Q533 720 539.0 713.5Q545 707 545 697Q545 681 528.5 642.5Q512 604 485.5 550.5Q459 497 430.0 434.0Q401 371 374.5 306.0Q348 241 331.5 180.5Q315 120 315 70Q315 42 318.0 28.0Q321 14 338 14Q359 14 387.0 32.0Q415 50 443.0 83.0Q471 116 492 162L504 153Q485 102 452.0 61.5Q419 21 381.5 -2.5Q344 -26 310 -26Q273 -26 258.5 -1.5Q244 23 244 49Q244 66 249.0 94.0Q254 122 263 156Q231 103 195.0 60.5Q159 18 124.5 -6.0Q90 -30 59 -30Z" transform="translate(1320, 0)" /> <path class="sig-letter" d="M69 -32Q26 -32 8.0 -5.5Q-10 21 -10 59Q-10 90 0.0 123.0Q10 156 26.5 185.0Q43 214 63.5 232.0Q84 250 105 250Q110 250 115.5 248.5Q121 247 126 245Q117 237 104.5 215.5Q92 194 81.0 166.5Q70 139 62.5 112.0Q55 85 55 66Q55 36 65.0 22.5Q75 9 91 9Q112 9 141.0 31.5Q170 54 198 89Q170 112 154.5 149.5Q139 187 139 226Q139 259 150.5 288.0Q162 317 184.0 334.5Q206 352 237 352Q278 352 292.0 330.0Q306 308 306 275Q306 236 287.0 188.5Q268 141 239 97Q257 87 277 87Q293 87 313.0 93.5Q333 100 352.5 116.0Q372 132 384 159L396 149Q376 102 339.5 82.5Q303 63 270 63Q257 63 245.0 65.5Q233 68 222 73Q188 28 147.5 -2.0Q107 -32 69 -32ZM216 115Q241 152 257.5 192.5Q274 233 274 269Q274 298 265.5 311.5Q257 325 244 325Q224 325 203.0 296.0Q182 267 182 223Q182 194 190.5 164.5Q199 135 216 115Z" transform="translate(1793, 0)" /> <path class="sig-letter" d="M173 -26Q139 -26 119.5 -8.0Q100 10 100 39Q100 69 114.0 102.0Q128 135 141.5 167.5Q155 200 155 226Q155 258 136.5 273.5Q118 289 99 302Q76 243 51.0 190.0Q26 137 10 110L1 127Q15 153 37.5 203.0Q60 253 82 317Q72 327 72 341Q72 371 89.0 390.0Q106 409 114 409Q125 409 126.5 399.5Q128 390 128 385Q128 380 122.5 365.5Q117 351 117 348Q117 334 132.5 322.5Q148 311 168.0 296.5Q188 282 203.5 261.5Q219 241 219 209Q219 179 206.5 148.0Q194 117 181.5 89.0Q169 61 169 40Q169 22 178.0 16.0Q187 10 199 10Q223 10 248.5 25.0Q274 40 298.0 63.0Q322 86 341.0 111.5Q360 137 369 159L382 149Q363 107 330.0 66.5Q297 26 256.5 0.0Q216 -26 173 -26Z" transform="translate(2158, 0)" /> <path class="sig-letter" d="M93 -73Q41 -73 15.5 -39.0Q-10 -5 -10 53Q-10 103 7.0 171.0Q24 239 52.0 313.5Q80 388 114.5 459.0Q149 530 184.0 587.5Q219 645 250.0 679.5Q281 714 301 714Q318 714 325.5 693.0Q333 672 333 651Q333 623 321.0 583.0Q309 543 287.0 497.5Q265 452 236.0 408.0Q207 364 173.5 327.5Q140 291 105 270Q99 259 87.5 224.5Q76 190 66.5 145.5Q57 101 57 59Q57 18 69.5 -8.5Q82 -35 112 -35Q141 -35 172.0 -11.5Q203 12 222 49Q185 68 167.0 104.5Q149 141 149 178Q149 226 174.0 255.0Q199 284 233 284Q262 284 279.0 260.5Q296 237 296 192Q296 159 287.0 124.0Q278 89 261 56Q267 55 273.5 54.0Q280 53 287 53Q323 53 347.0 70.5Q371 88 387.5 113.5Q404 139 415 162L427 149Q399 80 360.5 57.5Q322 35 284 35Q276 35 268.0 36.0Q260 37 252 38Q225 -8 185.5 -40.5Q146 -73 93 -73ZM232 69Q243 92 249.0 117.5Q255 143 255 170Q255 205 245.5 225.0Q236 245 222 245Q207 245 195.5 224.5Q184 204 184 173Q184 146 195.0 116.0Q206 86 232 69ZM116 309Q144 331 170.5 365.0Q197 399 220.0 437.5Q243 476 261.0 513.0Q279 550 289.0 580.0Q299 610 299 625Q299 630 298.0 631.5Q297 633 295 633Q287 633 264.5 604.5Q242 576 214.5 528.5Q187 481 160.0 423.5Q133 366 116 309Z" transform="translate(2506, 0)" /> <path class="sig-letter" d="M108 -44Q47 -44 16.5 -10.5Q-14 23 -14 72Q-14 117 8.5 167.0Q31 217 68.5 261.0Q106 305 151.0 332.5Q196 360 240 360Q263 360 282.5 348.0Q302 336 302 299Q302 261 279.5 227.5Q257 194 220.5 168.0Q184 142 140.5 125.5Q97 109 54 105Q52 95 51.0 86.0Q50 77 50 69Q50 54 53.5 39.0Q57 24 66.0 11.5Q75 -1 90.5 -8.0Q106 -15 129 -15Q172 -15 214.0 9.5Q256 34 292.0 74.0Q328 114 353 162L365 153Q338 93 296.5 49.0Q255 5 206.5 -19.5Q158 -44 108 -44ZM59 124Q86 133 120.0 150.5Q154 168 185.5 192.0Q217 216 237.5 245.0Q258 274 258 306Q258 317 254.0 323.0Q250 329 237 329Q213 329 186.0 310.5Q159 292 134.0 262.0Q109 232 89.0 196.0Q69 160 59 124Z" transform="translate(2900, 0)" /> <path class="sig-letter" d="M297 -38Q269 -38 249.0 -19.0Q229 0 217.5 29.0Q206 58 200.5 88.5Q195 119 195 142Q206 142 227.0 147.5Q248 153 270.0 164.5Q292 176 307.5 194.5Q323 213 323 238Q323 259 308.0 271.0Q293 283 273 283Q242 283 215.0 261.5Q188 240 166.5 205.5Q145 171 128.0 132.0Q111 93 99.0 58.0Q87 23 79 0Q73 -18 62.0 -24.5Q51 -31 39 -31Q22 -31 14.5 -17.0Q7 -3 5.5 18.5Q4 40 4 63Q4 115 21.0 183.0Q38 251 66.5 324.5Q95 398 129.0 467.0Q163 536 197.0 592.0Q231 648 260.0 681.0Q289 714 307 714Q321 714 329.5 695.0Q338 676 338 649Q338 615 323.0 572.5Q308 530 280.5 487.0Q253 444 215.5 406.0Q178 368 134 341Q101 260 84.5 183.5Q68 107 68 55Q84 95 106.5 143.0Q129 191 158.0 235.0Q187 279 221.0 307.0Q255 335 292 335Q329 335 355.0 309.0Q381 283 381 246Q381 214 364.5 191.5Q348 169 324.5 155.5Q301 142 277.5 135.5Q254 129 239 129Q240 121 245.0 100.0Q250 79 259.5 56.0Q269 33 283.0 16.5Q297 0 317 0Q346 0 372.0 22.0Q398 44 421.5 80.5Q445 117 465 163L475 153Q461 104 432.0 60.5Q403 17 367.5 -10.5Q332 -38 297 -38ZM151 381Q197 418 231.5 465.0Q266 512 285.0 555.5Q304 599 304 624Q304 629 303.5 631.0Q303 633 301 633Q291 633 266.5 598.0Q242 563 211.0 505.5Q180 448 151 381Z" transform="translate(3233, 0)" />
-  </g>
-</svg></span></h1>
+                    class="first-name"><span class="big-s" id="heroBigS">S</span><span class="hw-text" id="heroRestName">ardorbek</span></span></h1>
             <p class="hero-role reveal delay-2">Statistics Student at TSUE</p>
             <p class="hero-subtitle reveal delay-2" style="min-height: 30px;">
                 I specialize in <span class="typed-text"></span><span class="cursor">&nbsp;</span>
@@ -3010,32 +2988,23 @@
         });
 
 
-        /* ===== HERO SARDORBEK EXACT VECTOR HANDWRITING INTRO & QOSIMOV REVEAL (0.5s SLOWER) ===== */
+        /* ===== HERO SARDORBEK EXACT LAYOUT ANIMATION (0.5s SLOWER) ===== */
         document.addEventListener("DOMContentLoaded", function () {
-            const letters = document.querySelectorAll(".sig-letter");
+            const heroBigS = document.getElementById("heroBigS");
+            const heroRestName = document.getElementById("heroRestName");
             const heroFamilyName = document.getElementById("heroFamilyName");
-            if (!letters.length) return;
-
-            letters.forEach((path, idx) => {
-                const len = path.getTotalLength() + 20;
-                path.style.strokeDasharray = `${len} ${len}`;
-                path.style.strokeDashoffset = len;
-                path.style.fill = "transparent";
-                path.style.transition = "none";
-
-                const startDelay = 350 + (idx * 210);
-                setTimeout(() => {
-                    path.style.transition = "stroke-dashoffset 1.05s cubic-bezier(0.25, 0.1, 0.25, 1), fill 0.75s ease 0.75s";
-                    path.style.strokeDashoffset = "0";
-                    path.style.fill = "#007AFF";
-                }, startDelay);
-            });
 
             setTimeout(() => {
-                if (heroFamilyName) {
-                    heroFamilyName.classList.add("is-revealed");
-                }
-            }, 2650);
+                if (heroBigS) heroBigS.classList.add("is-drawn");
+                
+                setTimeout(() => {
+                    if (heroRestName) heroRestName.classList.add("is-drawn");
+
+                    setTimeout(() => {
+                        if (heroFamilyName) heroFamilyName.classList.add("is-revealed");
+                    }, 2600);
+                }, 250);
+            }, 300);
         });
 
 
